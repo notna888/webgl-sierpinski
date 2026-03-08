@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WebGL Learning</title>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="webgl.js"></script>
+        <script src="vue_app.js"></script>
+        <script src="image_download.js"></script>
+
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body :style="{ backgroundColor: htmlBg }">
+        <article id="vue-app" class="controls">
+            <h2>Fractal Settings</h2>
+
+            <control-group>
+                <label>Iterations: {{ depth }}</label>
+                <input
+                    type="range"
+                    v-model.number="depth"
+                    min="0"
+                    max="9"
+                />
+            </control-group>
+
+            <control-group>
+                <label>HTML Background</label>
+                <input type="color" v-model="htmlBg" />
+            </control-group>
+
+            <control-group>
+                <label>Canvas Background</label>
+                <input type="color" v-model="canvasBg" />
+            </control-group>
+
+
+            <control-group>
+                <label>Corner 1 (Bottom Left)</label>
+                <input type="color" v-model="c1" />
+            </control-group>
+
+            <control-group>
+                <label>Corner 2 (Top Middle)</label>
+                <input type="color" v-model="c2" />
+            </control-group>
+
+            <control-group>
+                <label>Corner 3 (Bottom Right)</label>
+                <input type="color" v-model="c3" />
+            </control-group>
+
+        </article>
+
+        <article class="centred">
+            <canvas id="gl-canvas" width="720" height="720"></canvas>
+        </article>
+
+        <article>
+            <button type="button" onclick="downloadCanvas()">
+                Make Into PNG
+            </button>
+            <div id="output-png"></div>
+        </article>
+    </body>
+
+</html>
