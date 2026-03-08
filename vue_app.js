@@ -50,4 +50,8 @@ function init_vue() {
     app.mount('body');
 }
 
-window.addEventListener('load', init_vue);
+
+window.onload = function () {
+  init_vue();
+  main();
+};
